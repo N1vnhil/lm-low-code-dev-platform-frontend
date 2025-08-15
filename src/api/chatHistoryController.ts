@@ -84,7 +84,7 @@ export async function save(body: API.ChatHistory, options?: { [key: string]: any
 }
 
 /** 此处后端没有提供注释 PUT /chatHistory/update */
-export async function update1(body: API.ChatHistory, options?: { [key: string]: any }) {
+export async function update(body: API.ChatHistory, options?: { [key: string]: any }) {
   return request<boolean>('/chatHistory/update', {
     method: 'PUT',
     headers: {
