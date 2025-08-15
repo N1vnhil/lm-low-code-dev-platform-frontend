@@ -117,8 +117,8 @@ const doLogout = async () => {
 }
 
 .logo {
-  width: 32px;
-  height: 32px;
+  width: 64px;
+  height: 64px;
   margin-right: 8px;
 }
 
