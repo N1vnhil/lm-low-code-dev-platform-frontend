@@ -2,7 +2,9 @@
 import type { MenuProps } from 'ant-design-vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useLoginUserStore } from '@/stores/loginUser.ts'
 
+const loginUserStore = useLoginUserStore()
 const router = useRouter()
 const selectedKeys = ref<string[]>(['/'])
 router.afterEach((to) => {
@@ -46,7 +48,15 @@ const menuItems = ref([
       @click="handleClick"
     />
     <div class="user-container">
-      <a-button type="primary">Login</a-button>
+      <div v-if="loginUserStore.loginUser.id">
+        <a-space>
+          <a-avatar :src="loginUserStore.loginUser.userAvatar" />
+          {{ loginUserStore.loginUser.userName ?? '用户名未设置' }}
+        </a-space>
+      </div>
+      <div v-else>
+        <a-button type="primary" href="/user/login">Login</a-button>
+      </div>
     </div>
   </a-layout-header>
 </template>
