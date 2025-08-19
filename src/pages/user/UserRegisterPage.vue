@@ -19,7 +19,7 @@
 
       <a-form-item
         label="密码"
-        name="userPassword"
+        name="password"
         :rules="[{ required: true, message: '请输入密码!' }]"
       >
         <a-input-password v-model:value="formState.password" />
@@ -50,7 +50,7 @@ const router = useRouter()
 
 interface FormState {
   userAccount: string
-  userPassword: string
+  password: string
   checkPassword: string
 }
 
@@ -61,7 +61,7 @@ const formState = reactive<API.UserRegisterRequest>({
 })
 
 const onFinish = async (values: FormState) => {
-  if (values.userPassword !== values.checkPassword) {
+  if (values.password !== values.checkPassword) {
     message.error('两次输入的密码不一致')
     return
   }
